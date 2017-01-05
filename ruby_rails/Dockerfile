@@ -9,7 +9,7 @@
 FROM codenvy/ubuntu_jre
 ENV RAILS_VERSION 4.2.6
 ENV RUBY_MAJOR 2.3
-ENV RUBY_VERSION 2.3.0
+ENV RUBY_VERSION 2.3.1
 ENV RUBY_DOWNLOAD_SHA256 ba5ba60e5f1aa21b4ef8e9bf35b9ddb57286cb546aac4b5a28c71f459467e507
 ENV RUBYGEMS_VERSION 2.6.2
 
@@ -52,7 +52,7 @@ RUN cd /usr/src/ruby \
     && sudo rm -r /usr/src/ruby
 
 
-ENV BUNDLER_VERSION 1.11.2
+ENV BUNDLER_VERSION 1.12.3
 
 RUN sudo gem install bundler --version "$BUNDLER_VERSION"
 
@@ -70,7 +70,7 @@ RUN sudo mkdir -p "$GEM_HOME" "$BUNDLE_BIN" \
 RUN sudo apt-get update && sudo apt-get install -y nodejs --no-install-recommends && sudo rm -rf /var/lib/apt/lists/*
 
 # see http://guides.rubyonrails.org/command_line.html#rails-dbconsole
-RUN sudo apt-get update && sudo apt-get install -y mysql-client postgresql-client sqlite3 --no-install-recommends && sudo rm -rf /var/lib/apt/lists/*
+RUN sudo apt-get update && sudo apt-get install -y libpq-dev mysql-client postgresql-client sqlite3 --no-install-recommends && sudo rm -rf /var/lib/apt/lists/*
 
 RUN sudo gem install rails --version "$RAILS_VERSION"
 
